@@ -1,0 +1,182 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title></title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-grid.min">
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			window.localStorage;
+			var num = localStorage.getItem("#contador");
+			if (num === null){
+				num = 0;
+			}
+			num++;
+			localStorage.setItem("#contador", num);
+			$("#contador").prepend(num);
+
+			var cosas = [];
+			var todo = {};
+			// {tit: "asd", not: "fasd", ele: "das"    }
+
+
+			$("#for, #for2, #for3").click(function(){
+				$("#formulari").toggle("fade");
+			});
+			$("#b").click(function(){
+
+				var date = new Date();
+
+				var selectPos = $("#elegir").val();
+				var sexi = "<article>" +
+											"<h2>" + $("#tit").val()+ "</h2>" +
+											"<p>" + $("#not").val() + "</p>" +
+											"<button class=\"borrar\" type=\"button\" name=\"button\">borrar</button>"+
+										"</article>";
+			  var asi = "<article>" +
+										"<h3>" + $("#tit").val()+ "</h2>" +
+										"<p>" + $("#not").val() + "</p>" +
+									"</article>";
+
+				if ($("#tit").val() === "" || $("#not").val() == "") {
+
+				}else {
+
+					if ( selectPos === "Principal") {
+						$("#sexi").prepend(sexi);
+						$(".borrar").click(function(){
+							$(this).parent().remove();
+						});
+					}else if (selectPos === "Secundari") {
+						var tot = "{tit: " + $("#tit").val() + ", not: " + $("#not").val() + ", ele: aside}";
+						cosas.push(tot);
+						$("#asi").prepend(asi);
+
+					}
+					todo.tit = $("#tit").val();
+					todo.not = $("#not").val();
+					todo.elec = selectPos;
+					cosas.push(todo);
+					localStorage.setItem("my_cosas", JSON.stringify(cosas));
+				}
+
+			});
+				$(".borrar").click(function(){
+					$(this).parent().remove();
+			});
+				for (var i = 0; i < cosasGuardadas.length; i++) {
+					$("#contador").prepend(cosasGuardadas[].tit);
+				};
+
+
+
+
+
+		});
+
+		</script>
+
+</head>
+<body>
+
+	<div id="header-container">
+		<header class="wrapper clearfix">
+			<h1 id="title">h1#title</h1>
+			<nav>
+				<ul>
+					<li><a id="for" href="#">nav ul li a</a></li>
+					<li><a id="for2" href="#">nav ul li a</a></li>
+					<li><a id="for3" href="#">nav ul li a</a></li>
+				</ul>
+			</nav>
+		</header>
+	</div>
+	<div id="formulari">
+		<fieldset>
+			<h4>Selec:
+				<select name="ele" id="elegir">
+					<option value="Principal">Principal</option>
+					<option value="Secundari">Secundari</option>
+				</select>
+			</fieldset>
+			</h4>
+		<fieldset>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<h4>titulo:    </h4>
+				</div>
+			<input id="tit" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+		</div>
+		</fieldset>
+	<fieldset>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<h4>noticia:</h4>
+			</div>
+			<textarea id="not" name="comentarios" rows="5" cols="40"></textarea>
+	</div>
+	</fieldset>
+	<button type="button" name="boton" id="b">Crear Noticia</button>
+</div>
+
+
+
+
+
+
+	<div id="main-container">
+		<div id="main" class="wrapper clearfix">
+
+			<section id="sexi">
+				<article>
+					<h2>section article 3</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec.</p>
+					<button class="borrar" type="button" name="button">borrar</button>
+				</article>
+				<article>
+					<h2>section article 2</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
+					<button class="borrar" type="button" name="button">borrar</button>
+				</article>
+				<article>
+					<h2>section article 1</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
+					<button class="borrar" type="button" name="button">borrar</button>
+				</article>
+
+			</section>
+
+			<aside id="asi">
+				<article>
+					<h3>aside article 1</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices.</p>
+				</article>
+			</aside>
+
+		</div> <!-- #main -->
+	</div> <!-- #main-container -->
+
+	<div id="footer-container">
+		<footer class="wrapper">
+			<h3>footer</h3>
+			<div id="contador">
+
+			</div>
+		</footer>
+	</div>
+
+</body>
+</html>
